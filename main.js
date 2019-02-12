@@ -13,12 +13,14 @@ saveBtn.addEventListener('click', saveToStore)
 
 // create function to save inputs in local storage
 function saveToStore() {
-  var newPost = {};
-  for (var i = 0; i < inputIdeas.length; i++) {
-    var currentPost = inputIdeas[i];
-    var postId = currentPost.id;
-    newPost[postId] = currentPost.value;
-  }
+  var title = document.querySelector('.title-style');
+  var body = document.querySelector('.body-style');
+  // var newPost = {};
+  // for (var i = 0; i < inputIdeas.length; i++) {
+  //   var currentPost = inputIdeas[i];
+  //   var postId = currentPost.id;
+  //   newPost[postId] = currentPost.value;
+  // }
 
   var stringIdea = JSON.stringify(newPost);
   console.log(newPost);
