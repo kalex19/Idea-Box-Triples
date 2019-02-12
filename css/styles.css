@@ -2,6 +2,7 @@ body {
   display: grid;
   grid-template-columns:  50% auto;
   grid-template-rows: 10% 20% auto;
+  height: 1200px;
   /* grid-template-areas: "nav-left nav-left"
   "section section "
   "main main "; */
@@ -37,12 +38,38 @@ h1 {
   color: #fff;
 }
 
+button {
+  background-color: #5E5C6B;
+  color: #fff;
+}
+button, .body-style, .title-style  {
+  display: block;
+}
+
+.idea-input-style {
+  height: 50%;
+  width: 50%;
+  margin: 0 22%;
+}
 
 
-section {
-  display: grid;
+.title-style {
+  max-width: 100%;
+  height: 5%;
+}
+
+.body-style {
+  max-width: 100%;
+  height: 15%;
+}
+
+
+.idea-template-style {
   grid-area: 2/ 1 / 3 / 3;
   background-color: #EDF2F2;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr;
+
 }
 
 main {
