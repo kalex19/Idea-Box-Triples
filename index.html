@@ -4,12 +4,50 @@
     <title>Idea-Box-Triples</title>
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" type="text/css" href="./css/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,800"
+    rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1
+    /css/all.css" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <h1>Test</h1>
-
-
+    <nav>
+      <h1 class="nav-left"><span class="purple-ideabox">ideabox</span>triples
+      </h1>
+      <input class="search-style fa-search" type="text" name="search"
+      value="Search" <i class="fas fa-search"></i>
+    </nav>
+    <section>
+      <label for="title">Title</label>
+      <input class="title-style" type="text" name="title">
+      <label for="body">Body</label>
+      <input type="text" name="Body">
+      <button type="button" name="Save">Save</button>
+    </section>
+    <main>
+      <article class="idea-card-style">
+        <section>
+          <h2 class="card-title-style">Lorem ipsum</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
+        <div class="card-bot-style">
+          <svg id="downvote-btn" class="downvote" src="images/downvote.svg">
+          </svg>
+          <svg id="upvote-btn" class="upvote" src="images/upvote.svg">
+          </svg>
+          <h3 class="quality-style">Quality: <span id="quality-qualifer">Swill
+          </span></h3>
+          <svg id="delete-btn" class="delete-button" xml="">
+          </svg>
+        </div>
+      </article>
+    </main>
     <script src="idea.js"></script>
     <script src="main.js"></script>
   </body>
