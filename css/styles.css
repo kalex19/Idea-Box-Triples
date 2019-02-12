@@ -1,0 +1,32 @@
+body {
+  display: grid;
+  grid-template-columns:  50% auto;
+  grid-template-rows: 10% 20% auto;
+  grid-template-areas: "nav-left search-style"
+  "section section "
+  "main main ";
+}
+
+nav {
+  display: grid;
+  background-color: #524649;
+}
+
+.search-style {
+  grid-area: search-style;
+  height: 150px;
+  width: 200px
+}
+
+.nav-left {
+  grid-area: nav-left;
+  width: 80%;
+}
+
+section {
+  grid-area: section;
+}
+
+main {
+  grid-area: main;
+}
