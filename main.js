@@ -17,7 +17,7 @@ function createIdea() {
   var newIdea = new Idea(title, body, "Swill", Date.now());
   ideas.push(newIdea);
   newIdea.saveToStorage(ideas)
-
+}
 
   // for (var i = 0; i < inputIdeas.length; i++) {
   //   var currentPost = inputIdeas[i];
