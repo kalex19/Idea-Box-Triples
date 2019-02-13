@@ -15,16 +15,19 @@ function createIdea() {
   var body = document.querySelector('.body-style').value;
   var newIdea = new Idea(title, body, "Swill", Date.now());
   ideas.push(newIdea);
-  console.log(ideas);
   newIdea.saveToStorage(ideas)
   publishIdea(newIdea);
 }
-
-window.addEventListener('load', loadPage);
-function loadPage () {
-   for (let i = 0; i < ideas.length; i++) {
-     publishIdea(ideas[i]);
+loadPage (ideas)
+// window.addEventListener('load', loadPage);
+function loadPage (oldIdeas) {
+  ideas = [];
+   for (let i = 0; i < oldIdeas.length; i++) {
+     var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId);
+     ideas.push(newIdea);
+     publishIdea(newIdea);
    }
+   console.log(ideas);
 }
 
 function publishIdea(newIdeaObj) {
