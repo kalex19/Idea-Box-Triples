@@ -1,5 +1,4 @@
 // query select both inputs and sav btn
-var inputIdeas = document.querySelectorAll('.input-selector');
 var saveBtn = document.querySelector('#save-btn');
 var ideas = [];
 
@@ -13,11 +12,11 @@ saveBtn.addEventListener('click', createIdea)
 
 // create function to save inputs in local storage
 function createIdea() {
-  var title = document.querySelector('.title-style');
-  var body = document.querySelector('.body-style');
-  var newIdea = new Idea(title, body, "Swill", Date.now())
-  console.log(title);
-  ideas.push(newIdea)
+  var title = document.querySelector('.title-style').value;
+  var body = document.querySelector('.body-style').value;
+  var newIdea = new Idea(title, body, "Swill", Date.now());
+  ideas.push(newIdea);
+  newIdea.saveToStorage(ideas)
 
 
   // for (var i = 0; i < inputIdeas.length; i++) {

@@ -4,9 +4,9 @@ class Idea {
     this.body = body;
     this.quality = quality;
     this.cardId = cardId;
+    console.log(this.title);
   }
-  saveToStorage() {
-    var stringifyIdea = JSON.stringify(ideas);
-    localStorage.setItem('post', Idea);
+  saveToStorage(array) {
+    localStorage.setItem('post', JSON.stringify(array));
   }
 }
