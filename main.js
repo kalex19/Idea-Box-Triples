@@ -35,14 +35,11 @@ function publishIdea(newIdeaObj) {
       <p id="card-body">${newIdeaObj.body}</p>
     </section>
     <div class="card-box-style">
-      <svg id="downvote-btn" class="downvote" src="images/downvote.svg">
-      </svg>
-      <svg id="upvote-btn" class="upvote" src="images/upvote.svg">
-      </svg>
+      <img id="downvote-btn" class="downvote" src="images/downvote.svg">
+      <img id="upvote-btn" class="upvote" src="images/upvote.svg">
       <h3 class="quality-style">Quality: <span id="quality-qualifer">Swill
       </span></h3>
-      <svg id="delete-btn" class="delete-button" xml="">
-      </svg>
+      <img id="delete-btn" class="delete-button" src="images/delete.svg">
     </div>
   </article>`
 }
