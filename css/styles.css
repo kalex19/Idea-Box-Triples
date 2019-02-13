@@ -18,6 +18,10 @@ nav {
   justify-content: space-between;
 }
 
+.card-box-style img {
+  width: 50px;
+}
+
 .search-style {
 height: 45px;
 width: 300px;
