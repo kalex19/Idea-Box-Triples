@@ -7,18 +7,21 @@ class Idea {
   }
   saveToStorage(array) {
     localStorage.setItem('posts', JSON.stringify(array));
-    // console.log(localStorage.getItem('post'));
   }
-  // downloadFromStorage(newIdea) {
-  //   var storedIdea = localStorage.getItem('ideas', JSON.parse(storedIdea));
-  //   console.log('storedIdea');
-  // }
+  deleteFromStorage(array){
+  localStorage.removeItem('posts', JSON.parse(array)); 
+  }
+
+// findTheId(Id) {
+// var outOfStorage = JSON.parse(localStorage.getItem('posts'));
+// console.log(outOfStorage);
+// // Idea.map('posts' => cardId)
+// }
   // updateContent(title, body) {
   //   localStorage.getItem ('post', JSON.parse('post'));
   //   console.log(localStorage.getItem('post'));
   // }
-  // deleteFromStorage(array){
-  //   localStorage.remove('post', JSON.parse(array));
-  //
+ 
+  
   // }
 }
