@@ -1,19 +1,15 @@
-// query select both inputs and sav btn
+//QUERY SELECTORS
 var saveBtn = document.querySelector('#save-btn');
 var ideas = JSON.parse(localStorage.getItem('posts')) || [];
 var cardClick = document.querySelector('.card-container');
 
 
-console.log(cardClick);
-console.log(ideas);
-
-// event listener for save button that generates a new card and populates with inputs
-// event listener will also save the data in local storage
-
+//EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
 cardClick.addEventListener('click', deleteIdea)
-// deleteBtn.addEventListener('click', deleteFromStorage)
-// create function to save inputs in local storage
+
+
+//FUNCTIONS
 function createIdea() {
   var title = document.querySelector('.title-style').value;
   var body = document.querySelector('.body-style').value;
@@ -21,27 +17,6 @@ function createIdea() {
   ideas.push(newIdea);
   newIdea.saveToStorage(ideas)
   publishIdea(newIdea);
-  // console.log(newIdea.findTheId(1550189173276));
-}                         
-
-function deleteIdea(event) {
-if(event.target.classList.contains('delete-button')) {
-    var card = event.target.parentElement.parentElement;
-    card.remove();
-    var cardId = card.getAttribute('data-id');
-    ideas[0].deleteFromStorage(cardId);
-  }
-
-loadPage (ideas)
-// window.addEventListener('load', loadPage);
-function loadPage (oldIdeas) {
-  ideas = [];
-   for (let i = 0; i < oldIdeas.length; i++) {
-     var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId);
-     ideas.push(newIdea);
-     publishIdea(newIdea);
-   }
-   console.log(ideas);
 }
 
 function publishIdea(newIdeaObj) {
@@ -59,15 +34,26 @@ function publishIdea(newIdeaObj) {
       <img id="delete-btn" class="delete-button" src="images/delete.svg">
     </div>
   </article>`
+}                         
+
+loadPage (ideas)
+// window.addEventListener('load', loadPage);
+function loadPage (oldIdeas) {
+  ideas = [];
+  for (let i = 0; i < oldIdeas.length; i++) {
+  var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId);
+     ideas.push(newIdea);
+     publishIdea(newIdea);
+   }
 }
 
+function deleteIdea(event) {
+  if(event.target.classList.contains('delete-button')) {
+  var card = event.target.parentElement.parentElement;
+    card.remove();
+  var cardId = card.getAttribute('data-id');
+    ideas[0].deleteFromStorage(cardId);
+  }
 
 
-// create function to JSON the local storage inputs
-
-
-// create function to generate card
-
-// append card to the DOM
-
-// idea card persists after
+}
