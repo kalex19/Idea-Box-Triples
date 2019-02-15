@@ -15,16 +15,18 @@ cardClick.addEventListener('click', deleteIdea)
 function createIdea() {
   var title = document.querySelector('.title-style').value;
   var body = document.querySelector('.body-style').value;
-  var newIdea = new Idea(title, body, "Swill", Date.now());
+  var newIdea = new Idea(title, body, Date.now());
   ideas.push(newIdea);
   newIdea.saveToStorage(ideas)
   publishIdea(newIdea);
+  console.log(newIdea.findTheId(1550189173276));
 }                         
 
 function deleteIdea(event) {
   if(event.target.classList.contains('delete-button')) {
     event.target.parentElement.parentElement.remove();}
-    ideas.deleteFromStorage(ideas);
+    ideas.deleteFromStorage();
+
 }
 
 

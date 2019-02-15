@@ -1,5 +1,5 @@
 class Idea {
-  constructor(title, body, cardId) {
+  constructor(title, body, cardId, quality) {
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
@@ -12,16 +12,18 @@ class Idea {
   localStorage.removeItem('posts', JSON.parse(array)); 
   }
 
-// findTheId(Id) {
-// var outOfStorage = JSON.parse(localStorage.getItem('posts'));
-// console.log(outOfStorage);
-// // Idea.map('posts' => cardId)
+findTheId(Id) {
+var outOfStorage = JSON.parse(localStorage.getItem('posts'));
+console.log(outOfStorage);
+var indexOfStorage = outOfStorage.map(ideaObjects => ideaObjects.cardId).indexOf(Id);
+
+console.log(indexOfStorage);
 // }
   // updateContent(title, body) {
   //   localStorage.getItem ('post', JSON.parse('post'));
   //   console.log(localStorage.getItem('post'));
-  // }
- 
   
-  // }
+
+}
+
 }
