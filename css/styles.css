@@ -17,20 +17,9 @@ nav {
   justify-content: space-between;
 }
 
-.card-style {
-  padding-bottom: 10%;
-}
-
-.card-box-style img {
-  width: 50px;
-}
-
-.search-style {
-  height: 45px;
-  width: 300px;
-  margin-top: 10px;
-  border-radius: 6px;
-  font-size: x-large;
+h1 {
+  margin-left: 30px;
+  color: #fff;
 }
 
 .nav-left {
@@ -44,6 +33,14 @@ nav {
   margin-right: 5px;
 }
 
+.search-style {
+  height: 45px;
+  width: 300px;
+  margin-top: 10px;
+  border-radius: 6px;
+  font-size: x-large;
+}
+
 .fa-search {
   background-color: #a19c9c;
   color: #FFF;
@@ -54,21 +51,14 @@ nav {
   bottom: 3px;
   border-radius: 5px 3px 3px 0;
   padding: 14px 3px;
-
 }
 
-h1 {
-  margin-left: 30px;
-  color: #fff;
-}
-
-button {
-  background-color: #5E5C6B;
-  color: #fff;
-}
-
-button, .body-style, .title-style  {
-  display: inline-block;
+.idea-template-style {
+  grid-area: 2/ 1 / 3 / 3;
+  background-color: #EDF2F2;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr;
+  padding-top: 1%;
 }
 
 .idea-input-style {
@@ -77,16 +67,16 @@ button, .body-style, .title-style  {
   margin: 1% 20%;
 }
 
-label {
-  font-weight: 300;
-  margin: 10px auto;
-}
-
 .title-style {
   width: 100%;
   height: 13%;
   margin: 1% 0 2% 0;
   border-radius: 3px;
+}
+
+label {
+  font-weight: 300;
+  margin: 10px auto;
 }
 
 .body-style {
@@ -103,24 +93,19 @@ label {
   border-radius: 6px;
 }
 
-.idea-template-style {
-  grid-area: 2/ 1 / 3 / 3;
-  background-color: #EDF2F2;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 2fr;
-  padding-top: 1%;
+button {
+  background-color: #5E5C6B;
+  color: #fff;
+}
+
+button, .body-style, .title-style  {
+  display: inline-block;
 }
 
 main {
   display: grid;
   grid-area: 3/ 1 / 4 / 3;
   background-color: #FBFDFD;
-}
-
-p {
-  font-weight: 300;
-  color: #6A686A;
-  margin: 15px 10px 20px 10px;
 }
 
 article {
@@ -133,6 +118,21 @@ article {
   padding: 1%;
 }
 
+.card-style {
+  padding-bottom: 10%;
+}
+
+h2 {
+  color: #5E5C6B;
+  margin: 1px 10px;
+}
+
+p {
+  font-weight: 300;
+  color: #6A686A;
+  margin: 15px 10px 20px 10px;
+}
+
 .card-box-style {
   display: grid;
   grid-template-columns: 10% 10% auto 10%;
@@ -141,15 +141,8 @@ article {
   padding-top: 1%;
 }
 
-.card-title-style {
-  color: #5E5C6B;
-}
-
-svg {
-  margin: 0;
-  height: 1px;
-  width: 10%;
-  background-color: #000;
+.card-box-style img {
+  width: 50px;
 }
 
 h3 {
@@ -159,8 +152,12 @@ h3 {
   font-size: x-large;
 }
 
-h2 {
-  color: #5E5C6B;
-  margin: 1px 10px;
+svg {
+  margin: 0;
+  height: 1px;
+  width: 10%;
+  background-color: #000;
 }
+
+
 
