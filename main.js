@@ -2,6 +2,8 @@
 var saveBtn = document.querySelector('#save-btn');
 var ideas = JSON.parse(localStorage.getItem('posts')) || [];
 var cardClick = document.querySelector('.card-container');
+
+
 console.log(cardClick);
 console.log(ideas);
 
@@ -19,17 +21,16 @@ function createIdea() {
   ideas.push(newIdea);
   newIdea.saveToStorage(ideas)
   publishIdea(newIdea);
-  console.log(newIdea.findTheId(1550189173276));
+  // console.log(newIdea.findTheId(1550189173276));
 }                         
 
 function deleteIdea(event) {
-  if(event.target.classList.contains('delete-button')) {
-    event.target.parentElement.parentElement.remove();}
-    ideas.deleteFromStorage();
-
-}
-
-
+if(event.target.classList.contains('delete-button')) {
+    var card = event.target.parentElement.parentElement;
+    card.remove();
+    var cardId = card.getAttribute('data-id');
+    ideas[0].deleteFromStorage(cardId);
+  }
 
 loadPage (ideas)
 // window.addEventListener('load', loadPage);
@@ -45,7 +46,7 @@ function loadPage (oldIdeas) {
 
 function publishIdea(newIdeaObj) {
   var cardContainer = document.querySelector('.card-container');
-  cardContainer.innerHTML += `<article class="idea-card-style">
+  cardContainer.innerHTML += `<article id = "card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
     <section class="card-style">
       <h2 id="card-title" class="card-title-style">${newIdeaObj.title}</h2>
       <p id="card-body">${newIdeaObj.body}</p>
@@ -60,30 +61,7 @@ function publishIdea(newIdeaObj) {
   </article>`
 }
 
-// function deleteFromStorage {
-//
-//
-// }
 
-  // for (var i = 0; i < inputIdeas.length; i++) {
-  //   var currentPost = inputIdeas[i];
-  //   var postId = currentPost.id;
-  //   newPost[postId] = currentPost.value;
-  // }
-
-  // var stringIdea = JSON.stringify(newPost);
-  // console.log(newPost);
-  //
-  // localStorage.setItem('post', stringIdea);
-  //
-  // var post = localStorage.getItem('post');
-  //
-  // post = JSON.parse(post);
-
-
-
-  // post.push(newPost);
-  // console.log(post);
 
 // create function to JSON the local storage inputs
 
