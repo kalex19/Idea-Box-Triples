@@ -6,6 +6,7 @@ var cardClick = document.querySelector('.card-container');
 
 //EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
+// saveBtn.addEventListener('click', clearInputs)
 cardClick.addEventListener('click', buttonListener)
 
 
@@ -38,6 +39,18 @@ function publishIdea(newIdeaObj) {
   </article>`
 }
 
+// clearInputs(ideas);
+
+// function clearInputs(){
+//   var clearTitle = document.querySelector('title-style');
+//   if (clearTitle.innerText != ''){
+//     clearTitle.innerText = '';
+//   }
+//   // console.log(clearTitle);
+//   // clearTitle.innerText = '';
+//   // var clearBody = document.querySelector('body-style').value = '';
+// }
+
 loadPage (ideas)
 // window.addEventListener('load', loadPage);
 function loadPage (oldIdeas) {
@@ -69,13 +82,22 @@ function deleteIdea(e) {
 }
 
 function upVote(e)  {
-    var quality = e.target.nextSibling.nextSibling.lastChild;
-    console.log(qualitySelect);
+  var quality = e.target.nextSibling.nextSibling.lastChild;
     if (quality.innerText === 'Swill') {
       quality.innerText = 'Plausible'
     } else {
       quality.innerText = 'Genius'
     }
+    // ideas.push(quality);
+    //adding space in container each time upvote past plausible
+  // var title = document.querySelector('.title-style').value;
+  // var body = document.querySelector('.body-style').value;
+  // var newIdea = new Idea(title, body, Date.now());
+  // console.log(newIdea);
+  // ideas.push(newIdea);
+  // ideas.updateQuality();
+  // publishIdea(newIdea);
+
 }
 
 function downVote(e){
@@ -86,3 +108,13 @@ function downVote(e){
     quality.innerText = 'Swill'
   }
 }
+
+// function changeContent(e){
+//   cardClick();
+// //change content in card 
+// }
+
+//Append most recent card to top
+
+//stop change quality from expanding card size
+

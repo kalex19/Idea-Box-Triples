@@ -9,11 +9,6 @@ class Idea {
     localStorage.setItem('posts', JSON.stringify(array));
   }
 
-
-  findTheId(Id) {
-    var outOfStorage = JSON.parse(localStorage.getItem('posts'));
-}
-
   deleteFromStorage(cardId) {
     var targetIdea = ideas.find(function(idea) {
     idea.id === cardId
@@ -28,5 +23,15 @@ class Idea {
   }
 }
 
+updateContent() {
 
 }
+
+updateQuality(quality) {
+  savetoStorage(quality);
+}
+
+
+}
+
+
