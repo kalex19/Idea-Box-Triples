@@ -55,24 +55,34 @@ function buttonListener(e) {
   if(e.target.classList.contains('upvote'))  {
     upVote(e);
   }
+  if (e.target.classList.contains('downvote')){
+    downVote(e);
+  }
+
 }
 
 function deleteIdea(e) {
   var card = e.target.parentElement.parentElement;
     card.remove();
-
   var cardId = card.getAttribute('data-id');
     ideas[0].deleteFromStorage(cardId);
 }
 
 function upVote(e)  {
     var quality = e.target.nextSibling.nextSibling.lastChild;
-    var qualitySelect = document.querySelector('#quality-qualifer').innerText;
     console.log(qualitySelect);
-
-    if (quality.innerText == 'Swill') {
+    if (quality.innerText === 'Swill') {
       quality.innerText = 'Plausible'
     } else {
       quality.innerText = 'Genius'
     }
+}
+
+function downVote(e){
+  var quality = e.target.nextSibling.nextSibling.nextSibling.nextSibling.lastChild;
+  if (quality.innerText === 'Genius'){
+    quality.innerText = 'Plausible'
+  } else {
+    quality.innerText = 'Swill'
+  }
 }
