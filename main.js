@@ -6,7 +6,9 @@ var cardClick = document.querySelector('.card-container');
 
 //EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
-cardClick.addEventListener('click', deleteIdea)
+cardClick.addEventListener('click', buttonListener)
+
+
 
 
 //FUNCTIONS
@@ -34,7 +36,7 @@ function publishIdea(newIdeaObj) {
       <img id="delete-btn" class="delete-button" src="images/delete.svg">
     </div>
   </article>`
-}                         
+}
 
 loadPage (ideas)
 // window.addEventListener('load', loadPage);
@@ -46,14 +48,41 @@ function loadPage (oldIdeas) {
      publishIdea(newIdea);
    }
 }
+function buttonListener(e) {
+  if(e.target.classList.contains('delete-button')){
+    deleteIdea(e);
+  }
+  if(e.target.classList.contains('upvote'))  {
+    upVote(e);
+  }
+  if (e.target.classList.contains('downvote')){
+    downVote(e);
+  }
 
-function deleteIdea(event) {
-  if(event.target.classList.contains('delete-button')) {
-  var card = event.target.parentElement.parentElement;
+}
+
+function deleteIdea(e) {
+  var card = e.target.parentElement.parentElement;
     card.remove();
   var cardId = card.getAttribute('data-id');
     ideas[0].deleteFromStorage(cardId);
+}
+
+function upVote(e)  {
+    var quality = e.target.nextSibling.nextSibling.lastChild;
+    console.log(qualitySelect);
+    if (quality.innerText === 'Swill') {
+      quality.innerText = 'Plausible'
+    } else {
+      quality.innerText = 'Genius'
+    }
+}
+
+function downVote(e){
+  var quality = e.target.nextSibling.nextSibling.nextSibling.nextSibling.lastChild;
+  if (quality.innerText === 'Genius'){
+    quality.innerText = 'Plausible'
+  } else {
+    quality.innerText = 'Swill'
   }
-
-
 }

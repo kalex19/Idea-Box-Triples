@@ -1,8 +1,8 @@
 class Idea {
-  constructor(title, body, cardId, quality) {
+  constructor(title, body, cardId, quality = 'Swill') {
     this.title = title;
     this.body = body;
-    this.quality = 'Swill';
+    this.quality = quality;
     this.cardId = cardId;
   }
   saveToStorage(array) {
@@ -27,6 +27,6 @@ class Idea {
     targetIdea.saveToStorage(ideas);
   }
 }
-  
+
 
 }
