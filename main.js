@@ -1,12 +1,15 @@
 //QUERY SELECTORS
 var saveBtn = document.querySelector('#save-btn');
 var ideas = JSON.parse(localStorage.getItem('posts')) || [];
-var cardClick = document.querySelector('.card-container');
+var cardBtnClick = document.querySelector('.card-container');
+var cardBodyClick = document.querySelector('.card-container');
+
 
 
 //EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
-cardClick.addEventListener('click', buttonListener)
+cardBtnClick.addEventListener('click', buttonListener)
+cardBodyClick.addEventListener('click', cardListener)
 
 
 
@@ -25,8 +28,8 @@ function publishIdea(newIdeaObj) {
   var cardContainer = document.querySelector('.card-container');
   cardContainer.innerHTML += `<article id = "card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
     <section class="card-style">
-      <h2 id="card-title" class="card-title-style">${newIdeaObj.title}</h2>
-      <p id="card-body">${newIdeaObj.body}</p>
+      <h2 id="card-title" class="card-title-style" contenteditable="true" >${newIdeaObj.title}</h2>
+      <p id="card-body" class="card-body-style" contenteditable="true">${newIdeaObj.body}</p>
     </section>
     <div class="card-box-style">
       <img id="downvote-btn" class="downvote" src="images/downvote.svg">
@@ -58,7 +61,6 @@ function buttonListener(e) {
   if (e.target.classList.contains('downvote')){
     downVote(e);
   }
-
 }
 
 function deleteIdea(e) {
@@ -85,4 +87,33 @@ function downVote(e){
   } else {
     quality.innerText = 'Swill'
   }
+}
+
+function cardListener (e) {
+  if(e.target.classList.contains('card-title-style')){
+    editTitle(e);
+  }
+  if(e.target.classList.contains('card-body-style-')){
+    editBody(e);
+  }
+  else {
+    mainListener(e);
+  }
+}
+
+function editTitle (e) {
+  var title = getElementById('card-title');
+  var edit = title.innerHTML;
+
+}
+
+function editBody(e) {
+  var body = getElementById('card-body');
+  var edit = body.innerHTML;
+}
+
+function mainListener(e) {
+  var cardBodyClick = document.querySelector('.card-container');
+  console.log(cardBodyClick);
+
 }
