@@ -72,7 +72,6 @@ function deleteIdea(e) {
 
 function upVote(e)  {
     var quality = e.target.nextSibling.nextSibling.lastChild;
-    console.log(qualitySelect);
     if (quality.innerText === 'Swill') {
       quality.innerText = 'Plausible'
     } else {
@@ -102,18 +101,21 @@ function cardListener (e) {
 }
 
 function editTitle (e) {
-  var title = getElementById('card-title');
-  var edit = title.innerHTML;
 
 }
 
 function editBody(e) {
-  var body = getElementById('card-body');
+  var body = document.getElementById('card-body');
   var edit = body.innerHTML;
 }
 
 function mainListener(e) {
   var cardBodyClick = document.querySelector('.card-container');
-  console.log(cardBodyClick);
+  var title = document.getElementById('card-title').innerHTML;
+  var body = document.getElementById('card-body').innerHTML;
+  var newIdea = new Idea(title, body, Date.now());
+  // newIdea.updateContent(ideas);
+  console.log(newIdea)
+  console.log(title)
 
 }
