@@ -9,20 +9,17 @@ class Idea {
     localStorage.setItem('posts', JSON.stringify(array));
   }
 
-  updateContent(cardId) {
-    var targetIdea = ideas.find(function(idea) {
-    idea.id === cardId
-    localStorage.getItem('posts', JSON.parse(targetIdea));
-    console.log(targetIdea)
-    localStorage.setItem('posts',JSON.stringify());
-    })
-
-    // // var index = ideas.indexOf(targetIdea)
-    // ideas.setItem(index, 1);
-    // if (targetIdea === undefined) {
-    // ideas = [];
-
-
+  updateContent(element, text) {
+    if (element.id === 'card-title') {
+      this.title = text;
+    }
+    if (element.id === 'card-body') {
+      this.body = text;
+    }
+    var index = ideas.indexOf(this)
+    ideas.splice(index, 1);
+    // localStorage.getItem('posts', JSON.parse(cardId));
+    console.log(cardId, titleText, bodyText);
   }
 
 
