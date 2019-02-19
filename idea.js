@@ -14,6 +14,10 @@ class Idea {
     ideas.splice(index, 1, this);
   }
 
+  updateQuality(quality){
+    this.quality = quality;
+  }
+
 
   deleteFromStorage() {
     var index = ideas.indexOf(this)

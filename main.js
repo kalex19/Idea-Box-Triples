@@ -36,7 +36,7 @@ function publishIdea(newIdeaObj) {
     <div class="card-box-style">
       <img id="downvote-btn" class="downvote" src="images/downvote.svg">
       <img id="upvote-btn" class="upvote" src="images/upvote.svg">
-      <h3 class="quality-style">Quality: <span id="quality-qualifer">Swill
+      <h3 class="quality-style">Quality: <span id="quality-qualifer">${newIdeaObj.quality}
       </span></h3>
       <img id="delete-btn" class="delete-button" src="images/delete.svg">
     </div>
@@ -48,7 +48,8 @@ loadPage (ideas)
 function loadPage (oldIdeas) {
   ideas = [];
   for (let i = 0; i < oldIdeas.length; i++) {
-  var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId);
+    console.log(oldIdeas[i].quality);
+  var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
      ideas.push(newIdea);
      publishIdea(newIdea);
    }
@@ -74,30 +75,35 @@ function deleteIdea(e) {
 
 function upVote(e)  {
     var quality = e.target.nextSibling.nextSibling.lastChild;
+    var targetIdea = findIdea(e);
     if (quality.innerText === 'Swill') {
-      quality.innerText = 'Plausible'
+      quality.innerText = 'Plausible';
+      targetIdea.updateQuality('Plausible');
     } else {
-      quality.innerText = 'Genius'
+      quality.innerText = 'Genius';
+      targetIdea.updateQuality('Genius');
     }
+    targetIdea.saveToStorage(ideas);
 }
 
 function downVote(e){
   var quality = e.target.nextSibling.nextSibling.nextSibling.nextSibling.lastChild;
+  var targetIdea = findIdea(e);
   if (quality.innerText === 'Genius'){
     quality.innerText = 'Plausible'
+    targetIdea.updateQuality('Plausible');
   } else {
     quality.innerText = 'Swill'
+    targetIdea.updateQuality('Swill');
   }
+
+  targetIdea.saveToStorage(ideas);
 }
-// onclick of card, set the edited card to global variable
-// onclick of body, check what global variable is to local storage
-// if different, find index of old card, then splice in new
 
 function saveContent (e) {
   var element = e.target;
   var text = e.target.textContent;
   var targetIdea = findIdea(e);
-  console.log(targetIdea);
   if (element.id === 'card-title') {
     targetIdea.title = text;
   }
@@ -116,16 +122,3 @@ function findIdea (e) {
   });
 
 }
-
-
-// function editBody(e) {
-//   var body = document.getElementById('card-body');
-//   var edit = body.innerHTML;
-// }
-// check if global card is set
-// if the global card is set, check if the card exists in ideas
-// if globacard exists in ideas, that means card was clicked but no change happended so leave the update
-// else, didnt find globl card with ideas, so and update happended
-// loop through ideas and see if any of the cardId is equal to global card
-// find index from matching ideas, replace that index with global card
-// save to storage
