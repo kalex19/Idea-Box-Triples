@@ -27,7 +27,7 @@ function createIdea() {
 
 function publishIdea(newIdeaObj) {
   var cardContainer = document.querySelector('.card-container');
-  cardContainer.innerHTML += `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
+  var text = `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
     <section class="card-style">
       <h2 id="card-title" class="card-title-style" contenteditable="true" data-title="card-title">${newIdeaObj.title}</h2>
       <p id="card-body" class="card-body-style" contenteditable="true" data-body="body-content">${newIdeaObj.body}</p>
@@ -40,6 +40,7 @@ function publishIdea(newIdeaObj) {
       <img id="delete-btn" class="delete-button" src="images/delete.svg">
     </div>
   </article>`
+  cardContainer.insertAdjacentHTML('afterbegin', text);
 }
 
 loadPage (ideas)
@@ -125,10 +126,13 @@ function findIdea (e) {
 function searchIdeas(e) {
   var currentSearch = e.target.value;
   var regex = new RegExp(currentSearch, 'i');
-  console.log(regex);
   var ideaMatches = [];
   clearCards();
   for (let i = 0; i < ideas.length; i++) {
+    if (regex.test(ideas[i].quality)) {
+      ideaMatches.push(ideas[i]);
+      publishIdea(ideas[i]);
+    }
     if (regex.test(ideas[i].title) || regex.test(ideas[i].body)) {
       ideaMatches.push(ideas[i]);
       publishIdea(ideas[i]);
