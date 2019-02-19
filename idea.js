@@ -9,24 +9,25 @@ class Idea {
     localStorage.setItem('posts', JSON.stringify(array));
   }
 
-
-  findTheId(Id) {
-    var outOfStorage = JSON.parse(localStorage.getItem('posts'));
-}
-
-  deleteFromStorage(cardId) {
-    var targetIdea = ideas.find(function(idea) {
-    idea.id === cardId
-    })
-    var index = ideas.indexOf(targetIdea)
-    ideas.splice(index, 1);
-    if (targetIdea === undefined) {
-    ideas = [];
-    localStorage.clear();
-    } else {
-    targetIdea.saveToStorage(ideas);
+  updateContent() {
+    var index = ideas.indexOf(this)
+    ideas.splice(index, 1, this);
   }
-}
 
+  updateQuality(quality){
+    this.quality = quality;
+  }
+
+
+  deleteFromStorage() {
+    var index = ideas.indexOf(this)
+    ideas.splice(index, 1);
+    if (this === undefined) {
+      ideas = [];
+      localStorage.clear();
+    } else {
+      this.saveToStorage(ideas);
+    }
+  }
 
 }
