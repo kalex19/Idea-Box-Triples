@@ -3,15 +3,14 @@ var saveBtn = document.querySelector('#save-btn');
 var ideas = JSON.parse(localStorage.getItem('posts')) || [];
 var cardBtnClick = document.querySelector('.card-container');
 var cardBodyClick = document.querySelector('.card-container');
-console.log(ideas);
+var search = document.querySelector('.search-style');
 
 
 //EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
 cardBtnClick.addEventListener('click', buttonListener)
 cardBodyClick.addEventListener('focusout', saveContent )
-
-// cardBodyClick.addEventListener('click', cardListener)
+search.addEventListener('keyup', searchIdeas)
 
 
 
@@ -28,7 +27,7 @@ function createIdea() {
 
 function publishIdea(newIdeaObj) {
   var cardContainer = document.querySelector('.card-container');
-  cardContainer.innerHTML += `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
+  var text = `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
     <section class="card-style">
       <h2 id="card-title" class="card-title-style" contenteditable="true" data-title="card-title">${newIdeaObj.title}</h2>
       <p id="card-body" class="card-body-style" contenteditable="true" data-body="body-content">${newIdeaObj.body}</p>
@@ -41,6 +40,7 @@ function publishIdea(newIdeaObj) {
       <img id="delete-btn" class="delete-button" src="images/delete.svg">
     </div>
   </article>`
+  cardContainer.insertAdjacentHTML('afterbegin', text);
 }
 
 loadPage (ideas)
@@ -121,4 +121,24 @@ function findIdea (e) {
     return idea.cardId === cardId;
   });
 
+}
+
+function searchIdeas(e) {
+  var currentSearch = e.target.value;
+  var regex = new RegExp(currentSearch, 'i');
+  var ideaMatches = [];
+  clearCards();
+  for (let i = 0; i < ideas.length; i++) {
+    if (regex.test(ideas[i].title) || regex.test(ideas[i].body) || regex.test(ideas[i].quality)) {
+      ideaMatches.push(ideas[i]);
+      publishIdea(ideas[i]);
+    }
+  }
+}
+
+function clearCards() {
+  var cardContainer = document.querySelector('.card-container');
+  while (cardContainer.hasChildNodes()) {
+    cardContainer.removeChild(cardContainer.lastChild);
+  }
 }
