@@ -129,11 +129,7 @@ function searchIdeas(e) {
   var ideaMatches = [];
   clearCards();
   for (let i = 0; i < ideas.length; i++) {
-    if (regex.test(ideas[i].quality)) {
-      ideaMatches.push(ideas[i]);
-      publishIdea(ideas[i]);
-    }
-    if (regex.test(ideas[i].title) || regex.test(ideas[i].body)) {
+    if (regex.test(ideas[i].title) || regex.test(ideas[i].body) || regex.test(ideas[i].quality)) {
       ideaMatches.push(ideas[i]);
       publishIdea(ideas[i]);
     }
