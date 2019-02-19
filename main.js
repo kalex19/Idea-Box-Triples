@@ -124,10 +124,12 @@ function findIdea (e) {
 
 function searchIdeas(e) {
   var currentSearch = e.target.value;
+  var regex = new RegExp(currentSearch, 'i');
+  console.log(regex);
   var ideaMatches = [];
   clearCards();
   for (let i = 0; i < ideas.length; i++) {
-    if (currentSearch === ideas[i].title) {
+    if (regex.test(ideas[i].title) || regex.test(ideas[i].body)) {
       ideaMatches.push(ideas[i]);
       publishIdea(ideas[i]);
     }

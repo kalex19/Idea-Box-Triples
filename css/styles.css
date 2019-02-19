@@ -109,7 +109,6 @@ main {
 }
 
 article {
-  height: 33%;
   width: 60%;
   margin: 1% 20%;
   border: #c2c1c0 solid 2px;
@@ -158,6 +157,3 @@ svg {
   width: 10%;
   background-color: #000;
 }
-
-
-
