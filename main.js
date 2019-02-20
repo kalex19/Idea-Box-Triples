@@ -155,6 +155,19 @@ function searchIdeas(e) {
   }
 }
 
+function showAllCards(e) {
+  var show = showAllBtn.value;
+  var regex = new RegExp(show, 'i');
+  var ideaMatches = [];
+  clearCards();
+  for (let i = 0; i < ideas.length; i++) {
+    if (regex.test(ideas[i].title) || regex.test(ideas[i].body) || regex.test(ideas[i].quality)) {
+      ideaMatches.push(ideas[i]);
+      publishIdea(ideas[i]);
+    }
+  }
+}
+
 function searchSwill(e) {
   var filter = swillBtn.value;
   var regex = new RegExp(filter, 'i');
@@ -170,8 +183,6 @@ function searchSwill(e) {
 
 function searchPlaus(e) {
   var filter = plausBtn.value;
-  console.log(filter);
-  console.log('plausible');
   var regex = new RegExp(filter, 'i');
   var ideaMatches = [];
   clearCards();
@@ -196,18 +207,7 @@ function searchGenius(e) {
   }
 }
 
-function showAllCards(e) {
-  var show = e.target;
-  var regex = new RegExp(show, 'i');
-  var ideaMatches = [];
-  clearCards();
-  for (let i = 0; i < ideas.length; i++) {
-    if (regex.test(ideas[i].quality, 'i')) {
-      ideaMatches.push(ideas[i]);
-      publishIdea(ideas[i]);
-    }
-  }
-}
+
 
 
 
