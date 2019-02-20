@@ -6,7 +6,7 @@
 body {
   display: grid;
   grid-template-columns:  50% auto;
-  grid-template-rows: 6% 27% auto;
+  grid-template-rows: 6% 34% auto;
   height: 1200px;
 }
 
@@ -76,6 +76,10 @@ h1 {
 label {
   font-weight: 300;
   margin: 10px auto;
+}
+
+textarea {
+  resize: none;
 }
 
 .body-style {
