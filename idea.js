@@ -15,7 +15,7 @@ class Idea {
     ideas.splice(index, 1, this);
   }
 
-  updateQuality(quality){
+  updateQuality(quality) {
     this.quality = quality;
   }
 
