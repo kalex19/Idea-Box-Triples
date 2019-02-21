@@ -10,6 +10,10 @@ var geniusBtn = document.querySelector('.genius-btn');
 var showAllBtn = document.querySelector('.show-all-btn');
 var showMoreBtn = document.querySelector('.show-more-btn');
 var showLessBtn = document.querySelector('.show-less-btn');
+//var titleCharCount = document.querySelector('title-style');
+//var bodyCharCount = document.querySelector('body-style');
+// titleCount = 0;
+// bodyCount = 0;
 var ideaCount = 10;
 
 //EVENT LISTENERS
@@ -23,7 +27,10 @@ geniusBtn.addEventListener('click', searchGenius);
 showAllBtn.addEventListener('click', showAllButton);
 showMoreBtn.addEventListener('click', showMoreButton);
 showLessBtn.addEventListener('click', showLessButton);
-
+//titleCharCount.addEventListener('keyup', disableSaveButtonTitle);
+//bodyCharCount.addEventListener('keyup', disableSaveButtonBody);
+//titleCharCount.addEventListener('keydown', disableSaveButtonTitle);
+//bodyCharCount.addEventListener('keydown', disableSaveButtonBody);
 
 
 //FUNCTIONS
@@ -71,13 +78,13 @@ function publishIdea(newIdeaObj) {
 }
 
 function cardButtonListener(e) {
-  if(e.target.classList.contains('delete-button')){
+  if(e.target.classList.contains('delete-button')) {
     deleteIdea(e);
   }
-  if(e.target.classList.contains('upvote'))  {
+  if(e.target.classList.contains('upvote')) {
     upVote(e);
   }
-  if (e.target.classList.contains('downvote')){
+  if (e.target.classList.contains('downvote')) {
     downVote(e);
   }
 }
@@ -91,30 +98,28 @@ function clearFields() {
 
 function deleteIdea(e) {
   var card = e.target.parentElement.parentElement;
-    card.remove();
+  card.remove();
   var targetIdea = findIdea(e);
-  console.log(card, targetIdea);
   targetIdea.deleteFromStorage();
-  console.log("hello")
 }
 
 function upVote(e) {
-    var quality = e.target.nextSibling.nextSibling.lastChild;
-    var targetIdea = findIdea(e);
-    if (quality.innerText === 'Swill') {
-      quality.innerText = 'Plausible';
-      targetIdea.updateQuality('Plausible');
-    } else {
-      quality.innerText = 'Genius';
-      targetIdea.updateQuality('Genius');
-    }
-    targetIdea.saveToStorage(ideas);
+  var quality = e.target.nextSibling.nextSibling.lastChild;
+  var targetIdea = findIdea(e);
+  if (quality.innerText === 'Swill') {
+    quality.innerText = 'Plausible';
+    targetIdea.updateQuality('Plausible');
+  } else {
+    quality.innerText = 'Genius';
+    targetIdea.updateQuality('Genius');
+  }
+  targetIdea.saveToStorage(ideas);
 }
 
 function downVote(e) {
   var quality = e.target.nextSibling.nextSibling.nextSibling.nextSibling.lastChild;
   var targetIdea = findIdea(e);
-  if (quality.innerText === 'Genius'){
+  if (quality.innerText === 'Genius') {
     quality.innerText = 'Plausible'
     targetIdea.updateQuality('Plausible');
   } else {
@@ -231,9 +236,20 @@ function showLessButton() {
   }
 }
 
-function disableButtons(e){
-  var disabled = e.preventDefault();
-}
+
+// function disableSaveButtonTitle(e) {
+ // titleCount++;
+ // if (titleCount >= 120) { 
+//   document.getElementById('#save-btn').disabled = true
+// }
+//}
+
+ //function disableSaveButtonBody(e) {
+  // bodyCount++;
+  // if (bodyCount >= 120) {
+  //document.getElementById('#save-btn').disabled = true
+ // }
+//}
 
 function clearCards() {
   var cardContainer = document.querySelector('.card-container');
