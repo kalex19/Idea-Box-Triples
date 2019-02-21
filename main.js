@@ -12,8 +12,6 @@ var showMoreBtn = document.querySelector('.show-more-btn');
 var showLessBtn = document.querySelector('.show-less-btn');
 var ideaCount = 10;
 
-
-
 //EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
 cardBtnClick.addEventListener('click', cardButtonListener);
@@ -31,7 +29,7 @@ showLessBtn.addEventListener('click', showLessButton);
 //FUNCTIONS
 loadPage(ideas);
 
-function loadPage(oldIdeas){
+function loadPage(oldIdeas) {
   ideas = [];
   for (let i = 0; i < oldIdeas.length; i++) {
   var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
@@ -55,6 +53,7 @@ function publishIdea(newIdeaObj) {
   if (cardContainer.children.length >= ideaCount) {
     return;
   }
+
   var text = `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
     <section class="card-style">
       <h2 id="card-title" class="card-title-style" contenteditable="true" data-title="card-title">${newIdeaObj.title}</h2>
@@ -71,7 +70,6 @@ function publishIdea(newIdeaObj) {
   cardContainer.insertAdjacentHTML('afterbegin', text);
 }
 
-
 function cardButtonListener(e) {
   if(e.target.classList.contains('delete-button')){
     deleteIdea(e);
@@ -84,7 +82,7 @@ function cardButtonListener(e) {
   }
 }
 
-function clearFields(){
+function clearFields() {
   var title = document.querySelector('.title-style');
   var body = document.querySelector('.body-style');
   title.value = '';
@@ -100,7 +98,7 @@ function deleteIdea(e) {
   console.log("hello")
 }
 
-function upVote(e)  {
+function upVote(e) {
     var quality = e.target.nextSibling.nextSibling.lastChild;
     var targetIdea = findIdea(e);
     if (quality.innerText === 'Swill') {
@@ -113,7 +111,7 @@ function upVote(e)  {
     targetIdea.saveToStorage(ideas);
 }
 
-function downVote(e){
+function downVote(e) {
   var quality = e.target.nextSibling.nextSibling.nextSibling.nextSibling.lastChild;
   var targetIdea = findIdea(e);
   if (quality.innerText === 'Genius'){
@@ -200,7 +198,7 @@ function searchGenius(e) {
   }
 }
 
-function showAllButton(e){
+function showAllButton(e) {
   var show = showAllBtn.value;
    var regex = new RegExp(show, 'i');
    var ideaMatches = [];
@@ -213,7 +211,7 @@ function showAllButton(e){
    }
 }
 
-function showMoreButton () {
+function showMoreButton() {
   showMoreBtn.classList.add('hide-me');
   showLessBtn.classList.remove('hide-me');
   clearCards();
@@ -223,7 +221,7 @@ function showMoreButton () {
   }
 }
 
-function showLessButton(){
+function showLessButton() {
   showLessBtn.classList.add('hide-me');
   showMoreBtn.classList.remove('hide-me');
   clearCards();
@@ -235,8 +233,6 @@ function showLessButton(){
 
 function disableButtons(e){
   var disabled = e.preventDefault();
-  
-
 }
 
 function clearCards() {
