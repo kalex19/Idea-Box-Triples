@@ -10,10 +10,6 @@ var geniusBtn = document.querySelector('.genius-btn');
 var showAllBtn = document.querySelector('.show-all-btn');
 var showMoreBtn = document.querySelector('.show-more-btn');
 var showLessBtn = document.querySelector('.show-less-btn');
-//var titleCharCount = document.querySelector('title-style');
-//var bodyCharCount = document.querySelector('body-style');
-// titleCount = 0;
-// bodyCount = 0;
 var ideaCount = 10;
 
 //EVENT LISTENERS
@@ -27,11 +23,6 @@ geniusBtn.addEventListener('click', searchGenius);
 showAllBtn.addEventListener('click', showAllButton);
 showMoreBtn.addEventListener('click', showMoreButton);
 showLessBtn.addEventListener('click', showLessButton);
-//titleCharCount.addEventListener('keyup', disableSaveButtonTitle);
-//bodyCharCount.addEventListener('keyup', disableSaveButtonBody);
-//titleCharCount.addEventListener('keydown', disableSaveButtonTitle);
-//bodyCharCount.addEventListener('keydown', disableSaveButtonBody);
-
 
 //FUNCTIONS
 loadPage(ideas);
@@ -235,21 +226,6 @@ function showLessButton() {
     publishIdea(ideas[i]);
   }
 }
-
-
-// function disableSaveButtonTitle(e) {
- // titleCount++;
- // if (titleCount >= 120) { 
-//   document.getElementById('#save-btn').disabled = true
-// }
-//}
-
- //function disableSaveButtonBody(e) {
-  // bodyCount++;
-  // if (bodyCount >= 120) {
-  //document.getElementById('#save-btn').disabled = true
- // }
-//}
 
 function clearCards() {
   var cardContainer = document.querySelector('.card-container');
