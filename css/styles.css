@@ -47,7 +47,6 @@ h1 {
   align-self: center;
   position: relative;
   left: -22px;
-  bottom: 3px;
   border-radius: 5px 3px 3px 0;
   padding: 14px 3px;
 }
@@ -196,6 +195,132 @@ footer {
   grid-column: span 2;
 }
 
-@media screen {
 
+@media screen and (max-width: 1250px) {
+.card-box-style img {
+  width: 68%;
+  height: 62%;
+  grid-template-columns: 7% 7% auto 7%;
 }
+
+h3 {
+  padding-top: 4%;
+  font-size: large;
+}
+}
+
+
+@media screen and (max-width: 768px) {
+
+  nav {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.search-style {
+  margin: 2% 32%;
+  width: 200px;
+}
+
+.nav-left {
+  margin: 30px;
+}
+
+.fa-search {
+  left: -222px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.quality-btns {
+  flex-flow: column;
+}
+
+.swill-btn,
+.plaus-btn,
+.genius-btn,
+.show-all-btn {
+  width: 100%;
+  margin: 5px 0;
+  height: 36px;
+}
+
+.show-moreless-btn {
+  margin: 0;
+  width: 100%;
+}
+
+.show-more-btn {
+  width: 61%;
+  margin: 4% 20%;
+}
+
+.show-less-btn {
+  width: 61%;
+  margin: 4% 20%;  
+}
+
+.card-title-style,
+.card-body-style {
+  word-wrap: break-word;
+}
+
+.idea-card-style {
+  margin: 3% 20%;
+}
+
+.card-box-style {
+grid-template-columns: 7% 7% auto 7%;
+}
+
+.card-box-style img {
+  width: 72%;
+  height: 48%;
+}
+
+
+h3 {
+  margin: 0% 1%;
+  padding-top: 7%;
+  font-size: medium;
+}
+}
+
+@media screen and (max-width: 366px){
+
+
+.search-style {
+  margin: 3% 22%;
+  width: 200px;
+}
+
+.nav-left {
+  margin: 30px;
+}
+
+.fa-search {
+  left: -85px;
+  bottom: 2px;
+}
+
+.card-box-style {
+  grid-template-columns: 13% 7% auto 12%;
+}
+
+.card-box-style img {
+  width: 18px;
+  height: 30px;
+  margin-right: 16px;
+}
+
+
+h3 {
+  margin: 5% 9%;
+  padding-top: 14%;
+  font-size: small;
+}
+}
+
+

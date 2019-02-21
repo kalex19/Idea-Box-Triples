@@ -5,6 +5,7 @@ class Idea {
     this.quality = quality;
     this.cardId = cardId;
   }
+
   saveToStorage(array) {
     localStorage.setItem('posts', JSON.stringify(array));
   }
@@ -18,7 +19,6 @@ class Idea {
     this.quality = quality;
   }
 
-
   deleteFromStorage() {
     var index = ideas.indexOf(this)
     ideas.splice(index, 1);
@@ -29,5 +29,4 @@ class Idea {
       this.saveToStorage(ideas);
     }
   }
-
 }

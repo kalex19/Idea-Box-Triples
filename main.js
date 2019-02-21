@@ -30,22 +30,13 @@ showLessBtn.addEventListener('click', showLessButton);
 
 //FUNCTIONS
 loadPage(ideas);
-// displayTen(ideas);
+
 function loadPage(oldIdeas){
-    ideas = [];
-    for (let i = 0; i < oldIdeas.length; i++) {
-    var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
-       ideas.push(newIdea);
-       publishIdea(newIdea);
-
-
-  }
-}
-
-function displayTen(){
-  var display = ideas.slice(-10);
-  for (var i = 0; i < display.length; i++){
-    publishIdea(display[i]);
+  ideas = [];
+  for (let i = 0; i < oldIdeas.length; i++) {
+  var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
+    ideas.push(newIdea);
+    publishIdea(newIdea);
   }
 }
 
@@ -61,8 +52,7 @@ function createIdea() {
 
 function publishIdea(newIdeaObj) {
   var cardContainer = document.querySelector('.card-container');
-  console.log(cardContainer.children.length);
-  if (cardContainer.children.length > ideaCount) {
+  if (cardContainer.children.length >= ideaCount) {
     return;
   }
   var text = `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
@@ -80,16 +70,6 @@ function publishIdea(newIdeaObj) {
   </article>`
   cardContainer.insertAdjacentHTML('afterbegin', text);
 }
-
-
-//window.addEventListener()
-//write a FUNCTION called displayTen
-// take array as param
-//use ideas array and slice(-10)
-//create var for 'new' array'
-// for loop over array
-//publishIdea();
-// need a counter??
 
 
 function cardButtonListener(e) {
@@ -233,20 +213,16 @@ function showAllButton(e){
    }
 }
 
-//replace innertext function
-//show more button LISTENERS
-//use logic for pop page
-  function showMoreButton () {
-    showMoreBtn.classList.add('hide-me');
-    showLessBtn.classList.remove('hide-me');
-    clearCards();
-    ideaCount = 50;
-    for (let i = 0; i < ideas.length; i++) {
-      publishIdea(ideas[i]);
-    }
+function showMoreButton () {
+  showMoreBtn.classList.add('hide-me');
+  showLessBtn.classList.remove('hide-me');
+  clearCards();
+  ideaCount = 50;
+  for (let i = 0; i < ideas.length; i++) {
+    publishIdea(ideas[i]);
   }
+}
 
-//how do we trigger this function??
 function showLessButton(){
   showLessBtn.classList.add('hide-me');
   showMoreBtn.classList.remove('hide-me');
@@ -257,16 +233,15 @@ function showLessButton(){
   }
 }
 
-//disable button function
-// function disableButtons(e){
-//   var disabled = e.preventDefault();
-//
-//
-// }
+function disableButtons(e){
+  var disabled = e.preventDefault();
+  
+
+}
 
 function clearCards() {
   var cardContainer = document.querySelector('.card-container');
   while (cardContainer.hasChildNodes()) {
-    cardContainer.removeChild(cardContainer.lastChild);
+  cardContainer.removeChild(cardContainer.lastChild);
   }
 }
