@@ -136,6 +136,10 @@ button, .body-style, .title-style  {
   display: inline-block;
 }
 
+button:hover {
+  background-color: #524649;
+}
+
 main {
   display: grid;
   grid-area: 3/ 1 / 4 / 3;
@@ -190,4 +194,8 @@ footer {
   width: 100%;
   background-color: #EDF2F2;
   grid-column: span 2;
+}
+
+@media screen {
+
 }

@@ -12,17 +12,34 @@ var showAllBtn = document.querySelector('.show-all-btn');
 
 //EVENT LISTENERS
 saveBtn.addEventListener('click', createIdea)
-cardBtnClick.addEventListener('click', cardButtonListener)
-cardBodyClick.addEventListener('focusout', saveContent )
+cardBtnClick.addEventListener('click', cardButtonListener);
+cardBodyClick.addEventListener('focusout', saveContent);
 search.addEventListener('keyup', searchIdeas)
 swillBtn.addEventListener('click', searchSwill);
 plausBtn.addEventListener('click', searchPlaus);
 geniusBtn.addEventListener('click', searchGenius);
-showAllBtn.addEventListener('click', showAllCards);
+showAllBtn.addEventListener('click', showAllButton);
 
 
 
 //FUNCTIONS
+loadPage(ideas);
+function loadPage(oldIdeas){
+    ideas = [];
+    for (let i = 0; i < oldIdeas.length; i++) {
+    var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
+       ideas.push(newIdea);
+       publishIdea(newIdea);
+  }
+}
+
+function displayTen(){
+  var display = ideas.slice(-10);
+  for (var i = 0; i < display.length; i++){
+    publishIdea(display[i]);
+  }
+}
+
 function createIdea() {
   var title = document.querySelector('.title-style').value;
   var body = document.querySelector('.body-style').value;
@@ -51,16 +68,15 @@ function publishIdea(newIdeaObj) {
   cardContainer.insertAdjacentHTML('afterbegin', text);
 }
 
-loadPage (ideas)
 
-function loadPage (oldIdeas) {
-  ideas = [];
-  for (let i = 0; i < oldIdeas.length; i++) {
-  var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
-     ideas.push(newIdea);
-     publishIdea(newIdea);
-   }
-}
+//window.addEventListener()
+//write a FUNCTION called displayTen
+// take array as param
+//use ideas array and slice(-10)
+//create var for 'new' array'
+// for loop over array
+//publishIdea();
+// need a counter??
 
 
 function cardButtonListener(e) {
@@ -80,15 +96,15 @@ function clearFields(){
   var body = document.querySelector('.body-style');
   title.value = '';
   body.value = '';
-
-
 }
 
 function deleteIdea(e) {
   var card = e.target.parentElement.parentElement;
     card.remove();
   var targetIdea = findIdea(e);
+  console.log(card, targetIdea);
   targetIdea.deleteFromStorage();
+  console.log("hello")
 }
 
 function upVote(e)  {
@@ -114,7 +130,6 @@ function downVote(e){
     quality.innerText = 'Swill'
     targetIdea.updateQuality('Swill');
   }
-
   targetIdea.saveToStorage(ideas);
 }
 
@@ -138,26 +153,11 @@ function findIdea (e) {
   return ideas.find(function(idea) {
     return idea.cardId === cardId;
   });
-
 }
-
 
 function searchIdeas(e) {
   var currentSearch = e.target.value;
   var regex = new RegExp(currentSearch, 'i');
-  var ideaMatches = [];
-  clearCards();
-  for (let i = 0; i < ideas.length; i++) {
-    if (regex.test(ideas[i].title) || regex.test(ideas[i].body) || regex.test(ideas[i].quality)) {
-      ideaMatches.push(ideas[i]);
-      publishIdea(ideas[i]);
-    }
-  }
-}
-
-function showAllCards(e) {
-  var show = showAllBtn.value;
-  var regex = new RegExp(show, 'i');
   var ideaMatches = [];
   clearCards();
   for (let i = 0; i < ideas.length; i++) {
@@ -200,16 +200,59 @@ function searchGenius(e) {
   var ideaMatches = [];
   clearCards();
   for (let i = 0; i < ideas.length; i++) {
-    if (regex.test(ideas[i].quality)) {
+      if (regex.test(ideas[i].quality)) {
       ideaMatches.push(ideas[i]);
       publishIdea(ideas[i]);
     }
   }
 }
 
+function showAllButton(e){
+  var show = showAllBtn.value;
+   var regex = new RegExp(show, 'i');
+   var ideaMatches = [];
+   clearCards();
+   for (let i = 0; i < ideas.length; i++) {
+     if (regex.test(ideas[i].title) || regex.test(ideas[i].body) || regex.test(ideas[i].quality)) {
+       ideaMatches.push(ideas[i]);
+       publishIdea(ideas[i]);
+     }
+   }
+}
 
+//replace innertext function
+//show more button LISTENERS
+//use logic for pop page
+  function showMoreButton (oldIdeas) {
+    ideas = [];
+    for (let i = 0; i < oldIdeas.length; i++) {
+    var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
+       ideas.push(newIdea);
+       publishIdea(newIdea);
+       changeMoreText();
+     }
+  }
 
+function changeMoreText(){
+  document.getElementById('.shw-all-btn').innertext = 'Show Less';
+}
 
+//how do we trigger this function??
+function showLessButton(){
+  displayTen();
+  changeLessText();
+}
+//
+function changeLessText(){
+  document.getElementById('.shw-all-btn').innertext = 'Show More';
+}
+
+//disable button function
+// function disableButtons(e){
+//   var disabled = e.preventDefault();
+//
+//
+// }
 
 function clearCards() {
   var cardContainer = document.querySelector('.card-container');
