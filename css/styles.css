@@ -195,7 +195,6 @@ footer {
   grid-column: span 2;
 }
 
-
 @media screen and (max-width: 1250px) {
 .card-box-style img {
   width: 68%;
@@ -208,7 +207,6 @@ h3 {
   font-size: large;
 }
 }
-
 
 @media screen and (max-width: 768px) {
 
@@ -259,7 +257,7 @@ h1 {
 
 .show-less-btn {
   width: 61%;
-  margin: 4% 20%;  
+  margin: 4% 20%;
 }
 
 .card-title-style,
@@ -272,14 +270,13 @@ h1 {
 }
 
 .card-box-style {
-grid-template-columns: 7% 7% auto 7%;
+  grid-template-columns: 7% 7% auto 7%;
 }
 
 .card-box-style img {
   width: 72%;
   height: 48%;
 }
-
 
 h3 {
   margin: 0% 1%;
@@ -288,8 +285,7 @@ h3 {
 }
 }
 
-@media screen and (max-width: 366px){
-
+@media screen and (max-width: 366px) {
 
 .search-style {
   margin: 3% 22%;
@@ -315,12 +311,9 @@ h3 {
   margin-right: 16px;
 }
 
-
 h3 {
   margin: 5% 9%;
   padding-top: 14%;
   font-size: small;
 }
 }
-
-
