@@ -47,7 +47,6 @@ h1 {
   align-self: center;
   position: relative;
   left: -22px;
-  bottom: 3px;
   border-radius: 5px 3px 3px 0;
   padding: 14px 3px;
 }
@@ -196,6 +195,81 @@ footer {
   grid-column: span 2;
 }
 
-@media screen {
+@media screen and (min-width: 320px) {
+
+nav {
+  display: block;
+}
+
+.search-style {
+  margin: 10px 63px;
+  width: 200px;
+}
+
+.nav-left {
+  margin: 30px;
+}
+
+.fa-search {
+  left: -85px;
+  bottom: 2px;
+}
+
+.quality-btns {
+  flex-flow: column;
+}
+
+.swill-btn,
+.plaus-btn,
+.genius-btn,
+.show-all-btn {
+  width: 100%;
+  margin: 5px 0;
+  height: 36px;
+}
+
+.show-moreless-btn {
+  margin: 0;
+  width: 100%;
+}
+
+.show-more-btn {
+  width: 61%;
+  margin: 4% 20%;
+}
+
+.show-less-btn {
+  width: 61%;
+  margin: 4% 20%;  
+}
+
+.card-title-style,
+.card-body-style {
+  word-wrap: break-word;
+}
+
+.idea-card-style {
+  margin: 3% 20%;
+}
+
+.card-box-style {
+grid-template-columns: 13% 7% auto 12%;
+}
+
+.card-box-style img {
+  width: 18px;
+  height: 30px;
+  margin-right: 16px;
+}
+
+
+h3 {
+  margin: 5% 9%;
+  padding-top: 14%;
+  font-size: small;
+}
+
+
+
 
 }
