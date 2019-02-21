@@ -8,6 +8,10 @@ var swillBtn = document.querySelector('.swill-btn');
 var plausBtn = document.querySelector('.plaus-btn');
 var geniusBtn = document.querySelector('.genius-btn');
 var showAllBtn = document.querySelector('.show-all-btn');
+var showMoreBtn = document.querySelector('.show-more-btn');
+var showLessBtn = document.querySelector('.show-less-btn');
+var ideaCount = 10;
+
 
 
 //EVENT LISTENERS
@@ -19,17 +23,22 @@ swillBtn.addEventListener('click', searchSwill);
 plausBtn.addEventListener('click', searchPlaus);
 geniusBtn.addEventListener('click', searchGenius);
 showAllBtn.addEventListener('click', showAllButton);
+showMoreBtn.addEventListener('click', showMoreButton);
+showLessBtn.addEventListener('click', showLessButton);
 
 
 
 //FUNCTIONS
 loadPage(ideas);
+// displayTen(ideas);
 function loadPage(oldIdeas){
     ideas = [];
     for (let i = 0; i < oldIdeas.length; i++) {
     var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
        ideas.push(newIdea);
        publishIdea(newIdea);
+
+
   }
 }
 
@@ -52,6 +61,10 @@ function createIdea() {
 
 function publishIdea(newIdeaObj) {
   var cardContainer = document.querySelector('.card-container');
+  console.log(cardContainer.children.length);
+  if (cardContainer.children.length > ideaCount) {
+    return;
+  }
   var text = `<article id="card-template" class="idea-card-style" data-id=${newIdeaObj.cardId}>
     <section class="card-style">
       <h2 id="card-title" class="card-title-style" contenteditable="true" data-title="card-title">${newIdeaObj.title}</h2>
@@ -223,28 +236,25 @@ function showAllButton(e){
 //replace innertext function
 //show more button LISTENERS
 //use logic for pop page
-  function showMoreButton (oldIdeas) {
-    ideas = [];
-    for (let i = 0; i < oldIdeas.length; i++) {
-    var newIdea = new Idea(oldIdeas[i].title, oldIdeas[i].body, oldIdeas[i].cardId, oldIdeas[i].quality);
-       ideas.push(newIdea);
-       publishIdea(newIdea);
-       changeMoreText();
-     }
+  function showMoreButton () {
+    showMoreBtn.classList.add('hide-me');
+    showLessBtn.classList.remove('hide-me');
+    clearCards();
+    ideaCount = 50;
+    for (let i = 0; i < ideas.length; i++) {
+      publishIdea(ideas[i]);
+    }
   }
-
-function changeMoreText(){
-  document.getElementById('.shw-all-btn').innertext = 'Show Less';
-}
 
 //how do we trigger this function??
 function showLessButton(){
-  displayTen();
-  changeLessText();
-}
-//
-function changeLessText(){
-  document.getElementById('.shw-all-btn').innertext = 'Show More';
+  showLessBtn.classList.add('hide-me');
+  showMoreBtn.classList.remove('hide-me');
+  clearCards();
+  ideaCount = 10;
+  for (let i = 0; i < ideas.length; i++) {
+    publishIdea(ideas[i]);
+  }
 }
 
 //disable button function
