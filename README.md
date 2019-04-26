@@ -46,13 +46,14 @@ In the project directory, please open in browser.
 
 ### Issues
 
-* 
+* Seearch icon is not sticky (to seach bar)
+* General css width and height is off (elements are out of place) and unresponsive
 
 ### Contributors
 
 * Katherine Lewis @kalex19
 * Lauren Boyer
-* Erik Conner
+* Erik Conner @ehk9000
 
 ### License
 Turing School of Software (for providing the project specifications).
