@@ -46,7 +46,7 @@ In the project directory, please open in browser.
 
 ### Issues
 
-* Seearch icon is not sticky (to seach bar)
+* Search icon is not sticky (to seach bar)
 * General css width and height is off (elements are out of place) and unresponsive
 
 ### Contributors
